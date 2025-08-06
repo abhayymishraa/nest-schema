@@ -18,6 +18,7 @@ SCHEMA_NAME = "repository"
         ("contribution_guide_null.yaml", "None is not a 'uri'"),
         ("description_empty.yaml", "'' is too short"),
         ("description_null.yaml", "None is not of type 'string'"),
+        ("invalid_name.yaml", "'xy' is too short"),
         ("name_empty.yaml", "'' is too short"),
         ("name_null.yaml", "None is not of type 'string'"),
         ("url_empty.yaml", "'' is not a 'uri'"),
