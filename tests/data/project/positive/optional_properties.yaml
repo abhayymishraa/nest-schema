@@ -30,7 +30,7 @@ leaders:
     name: Leader 2 Name
     slack: leader-2-slack
 level: 2
-license: MIT
+license: [MIT]
 logo:
   - large: https://example.com/largeLogo
     medium: https://example.com/mediumLogo
