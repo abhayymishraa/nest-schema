@@ -179,7 +179,7 @@
         },
         "name": {
           "description": "Repository name",
-          "minLength": 5,
+          "minLength": 3,
           "type": "string"
         },
         "url": {
