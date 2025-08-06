@@ -17,10 +17,11 @@
           "Developers and engineers.",
           "Security professionals and defenders."
         ],
-        "type": "string",
-        "uniqueItems": true
+        "type": "string"
       },
-      "type": "array"
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
     },
     "blog": {
       "description": "Project's blog.",
