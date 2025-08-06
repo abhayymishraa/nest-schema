@@ -1,4 +1,4 @@
-audience: builder
+audience: [breaker]
 downloads:
   - xyz-abc
 name: Test Project
