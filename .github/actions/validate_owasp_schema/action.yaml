@@ -1,5 +1,5 @@
 name: 'Validate OWASP Schema'
-description: 'Automatically finds and validates the project.owasp.yaml, chapter.owasp.yaml, or committee.owasp.yaml file using a Docker container.'
+description: 'Automatically validates metadata files using a Docker container.'
 
 runs:
   using: 'docker'
