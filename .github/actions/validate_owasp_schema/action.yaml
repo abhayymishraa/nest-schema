@@ -1,0 +1,25 @@
+name: Validate OWASP Schema
+description: Validates schema files against OWASP JSON schema
+
+inputs:
+  file-path:
+    description: Path to the *schema file to validate.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      shell: bash
+      run: pip install owasp-schema pyyaml
+
+    - name: Run validation script
+      shell: bash
+      run: python ${{ github.action_path }}/validate.py
+      env:
+        INPUT_FILE_PATH: ${{ inputs.file-path }}
