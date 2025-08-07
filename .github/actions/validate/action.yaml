@@ -4,4 +4,3 @@ description: 'Automatically validates metadata files using a Docker container.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  

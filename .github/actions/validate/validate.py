@@ -8,7 +8,6 @@ import yaml
 from owasp_schema import get_schema
 from owasp_schema.utils.schema_validators import validate_data
 
-
 # The directory inside the Docker container where the user's repository is mounted
 REPO_WORKSPACE = Path("/github/workspace")
 SCHEMA_MAP = {
@@ -42,8 +41,6 @@ def main():
     schema_name = SCHEMA_MAP[file_name]
 
     sys.stdout.write(f"Found '{file_name}'. Validating against the '{schema_name}' schema...\n")
-
-
 
     try:
         schema = get_schema(schema_name)
