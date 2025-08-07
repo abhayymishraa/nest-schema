@@ -1,4 +1,5 @@
-audience: breaker
+audience:
+  - breaker
 community:
 leaders:
   - github: leader-1-github

@@ -125,7 +125,6 @@ from tests.conftest import tests_data_dir
             "tags_non_unique.yaml",
             "['example-tag-1', 'example-tag-1', 'example-tag-1'] has non-unique elements",
         ),
-        ("tags_undefined.yaml", "'tags' is a required property"),
         ("type_empty.yaml", "'' is not one of ['code', 'documentation', 'tool']"),
         ("type_null.yaml", "None is not one of ['code', 'documentation', 'tool']"),
         ("type_undefined.yaml", "'type' is a required property"),

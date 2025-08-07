@@ -1,4 +1,5 @@
-audience: breaker
+audience:
+  - breaker
 documentation:
 leaders:
   - github: leader-name-1

@@ -1,4 +1,5 @@
-audience: [breaker]
+audience:
+  - breaker
 documentation:
   - xyz-abc
 name: OWASP Incubator Code Project

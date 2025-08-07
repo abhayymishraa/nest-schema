@@ -1,4 +1,5 @@
-audience: breaker
+audience:
+  - breaker
 events:
   - url: https://example.com/event1
   - url: https://example.com/event1
