@@ -1,25 +1,6 @@
-name: Validate OWASP Schema
-description: Validates schema files against OWASP JSON schema
-
-inputs:
-  file-path:
-    description: Path to the *schema file to validate.
-    required: true
+name: 'Validate OWASP Schema'
+description: 'Automatically finds and validates the project.owasp.yaml, chapter.owasp.yaml, or committee.owasp.yaml file using a Docker container.'
 
 runs:
-  using: composite
-  steps:
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
-
-    - name: Install dependencies
-      shell: bash
-      run: pip install owasp-schema pyyaml
-
-    - name: Run validation script
-      shell: bash
-      run: python ${{ github.action_path }}/validate.py
-      env:
-        INPUT_FILE_PATH: ${{ inputs.file-path }}
+  using: 'docker'
+  image: 'Dockerfile'
