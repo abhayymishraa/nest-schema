@@ -1,4 +1,6 @@
-audience: [breaker, defender]
+audience:
+  - breaker
+  - defender
 blog: https://blog.projec.com
 community:
   - platform: slack

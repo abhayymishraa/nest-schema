@@ -1,4 +1,5 @@
-audience: [breaker]
+audience:
+  - breaker
 downloads:
   - xyz-abc
 name: Test Project

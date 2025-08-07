@@ -1,4 +1,5 @@
-audience: [breaker]
+audience:
+  - breaker
 leaders:
   - github: leader-1-github
     name: Leader 1 Name
@@ -8,8 +9,4 @@ leaders:
 level: 2
 name: OWASP Incubator Code Project
 pitch: A very brief, one-line description of your project
-tags:
-  - example-tag-1
-  - example-tag-2
-  - example-tag-3
 type: code

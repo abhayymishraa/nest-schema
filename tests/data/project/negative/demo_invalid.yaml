@@ -1,4 +1,5 @@
-audience: [breaker]
+audience:
+  - breaker
 demo:
   - https://invalid/
 leaders:

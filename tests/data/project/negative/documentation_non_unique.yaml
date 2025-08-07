@@ -1,4 +1,5 @@
-audience: breaker
+audience:
+  - breaker
 documentation:
   - https://example.com/docs
   - https://example.com/docs

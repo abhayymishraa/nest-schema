@@ -1,4 +1,5 @@
-audience: breaker
+audience:
+  - breaker
 level: 2
 name: OWASP Incubator Code Project
 pitch: A very brief, one-line description of your project

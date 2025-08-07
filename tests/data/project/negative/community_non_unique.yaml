@@ -1,4 +1,5 @@
-audience: breaker
+audience:
+  - breaker
 community:
   - platform: discord
     url: https://discord.com/example

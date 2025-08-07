@@ -1,4 +1,5 @@
-audience: builder
+audience:
+  - breaker
 events:
 name: Test Project
 level: 3

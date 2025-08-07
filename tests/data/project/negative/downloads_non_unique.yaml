@@ -1,4 +1,5 @@
-audience: builder
+audience:
+  - breaker
 downloads:
   - https://abc.com/download
   - https://abc.com/download
