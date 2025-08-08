@@ -1,2 +1,2 @@
+owasp-schema
 pyyaml
-owasp_schema

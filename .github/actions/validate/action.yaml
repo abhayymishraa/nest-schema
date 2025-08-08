@@ -1,6 +1,6 @@
-name: 'Validate OWASP Schema'
-description: 'Automatically validates metadata files using a Docker container.'
+name: Validate OWASP Schema
+description: Automatically validates metadata files agains OWASP schema.
 
 runs:
-  using: docker
   image: Dockerfile
+  using: docker

@@ -1,3 +1,5 @@
-#!/bin/sh -l
+#!/bin/sh
+
+set -e
 
 python /action/validate.py
