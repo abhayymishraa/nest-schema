@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-python /app/validate.py
+python /action/validate.py
