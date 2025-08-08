@@ -42,3 +42,7 @@ def main():
     else:
         sys.stdout.write("SUCCESS: Validation successful.")
         sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()
