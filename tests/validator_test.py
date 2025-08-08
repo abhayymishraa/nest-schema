@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 import validate as validator
 
+from tests.conftest import tests_data_dir
+
 
 @pytest.fixture
 def mock_workspace(tmp_path: Path, monkeypatch):
@@ -15,32 +17,16 @@ def mock_workspace(tmp_path: Path, monkeypatch):
 
 def test_validation_succeeds_with_valid_file(mock_workspace, capsys):
     """Valid file should pass validation."""
-    valid_content = """
-                    name: OWASP Incubator Code Project
-                    level: 2
-                    type: code
-                    pitch: "A very brief, one-line description of your project"
-
-                    audience:
-                      - breaker
-
-                    leaders:
-                      - name: Leader 1 Name
-                        github: leader-1-github
-                      - name: Leader 2 Name
-                        github: leader-2-github
-                        slack: leader-2-slack
-                    """
+    valid_content = (tests_data_dir / "validator" / "positive" / "valid_project.yaml").read_text()
     (mock_workspace / "project.owasp.yaml").write_text(valid_content)
 
     with pytest.raises(SystemExit) as exit_info:
         validator.main()  # type: ignore[attr-defined]
 
     assert exit_info.value.code == 0
-
     captured = capsys.readouterr()
     assert "SUCCESS: Validation passed!" in captured.out
-    assert captured.err == ""
+    assert not captured.err
 
 
 def test_validation_fails_when_no_file_found(capsys):
@@ -55,8 +41,15 @@ def test_validation_fails_when_no_file_found(capsys):
 
 def test_validation_fails_when_multiple_files_found(mock_workspace, capsys):
     """Multiple files should fail validation."""
-    (mock_workspace / "project.owasp.yaml").touch()
-    (mock_workspace / "chapter.owasp.yaml").touch()
+    project_content = (
+        tests_data_dir / "validator" / "positive" / "valid_project.yaml"
+    ).read_text()
+    chapter_content = (
+        tests_data_dir / "validator" / "positive" / "valid_chapter.yaml"
+    ).read_text()
+
+    (mock_workspace / "project.owasp.yaml").write_text(project_content)
+    (mock_workspace / "chapter.owasp.yaml").write_text(chapter_content)
 
     with pytest.raises(SystemExit) as exit_info:
         validator.main()  # type: ignore[attr-defined]
@@ -68,24 +61,11 @@ def test_validation_fails_when_multiple_files_found(mock_workspace, capsys):
 
 def test_validation_fails_with_invalid_data(mock_workspace, capsys):
     """Invalid file should fail validation."""
-    invalid_content = """
-                      audience:
-                        - breaker
-                      leaders:
-                        - github: leader-1-github
-                          name: Leader 1 Name
-                        - github: leader-2-github
-                          name: Leader 2 Name
-                          slack: leader-2-slack
-                      level: 2
-                      name: OWASP Incubator Code Project
-                      pitch: A very brief, one-line description of your project
-                      tags:
-                        - example-tag-1
-                        - example-tag-2
-                        - example-tag-3
-                      """
+    invalid_content = (
+        tests_data_dir / "validator" / "negative" / "invalid_project_type_missing.yaml"
+    ).read_text()
     (mock_workspace / "project.owasp.yaml").write_text(invalid_content)
+
     with pytest.raises(SystemExit) as exit_info:
         validator.main()  # type: ignore[attr-defined]
 
@@ -93,3 +73,17 @@ def test_validation_fails_with_invalid_data(mock_workspace, capsys):
     captured = capsys.readouterr()
     assert "ERROR: Validation failed!" in captured.err
     assert "'type' is a required property" in captured.err
+
+
+def test_validation_fails_with_empty_file(mock_workspace, capsys):
+    """An empty file should fail validation."""
+    empty_content = ""
+    (mock_workspace / "project.owasp.yaml").write_text(empty_content)
+
+    with pytest.raises(SystemExit) as exit_info:
+        validator.main()  # type: ignore[attr-defined]
+
+    assert exit_info.value.code == 1
+    captured = capsys.readouterr()
+    assert "ERROR: Validation failed!" in captured.err
+    assert "None is not of type 'object'" in captured.err
