@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "owasp-schema"
-version = "0.1.10"
+version = "0.1.11"
 description = "A collection of OWASP schemas"
 authors = ["Arkadii Yakovets <arkadii.yakovets@owasp.org>"]
 license = "MIT"
