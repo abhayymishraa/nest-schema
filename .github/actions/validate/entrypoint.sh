@@ -2,4 +2,4 @@
 
 set -e
 
-python /action/validate.py
+python /action/main.py
